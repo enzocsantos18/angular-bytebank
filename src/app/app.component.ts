@@ -9,14 +9,20 @@ export class AppComponent {
   title = 'bytebank';
 
 
-  transferencia: ITransferencia;
+  transferencias: ITransferencia[] = [];
 
   transferir($event) {
-    this.transferencia = $event;
+    const trasferencia =  {
+      ...$event,
+      data: new Date()
+    }
+
+    this.transferencias.push(trasferencia);
   }
 }
 
 interface ITransferencia {
   valor: number,
-  destino: number
+  destino: number,
+  data: Date
 }

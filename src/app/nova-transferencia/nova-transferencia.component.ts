@@ -12,8 +12,6 @@ export class NovaTransferenciaComponent {
   destino: number;
 
   transferir() {
-    console.log(this.valor, this.destino);
-
     const valoresTransferencia = {
       valor: this.valor,
       destino: this.destino,
