@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class TransferenciaService {
-  private listaTransferencias: any[];
+  private listaTransferencias: Transferencia[];
 
   private readonly url = 'http://localhost:3000/transferencias';
 
@@ -15,7 +15,7 @@ export class TransferenciaService {
     this.listaTransferencias = [];
   }
 
-  get transferencias() {
+  get transferencias(): Transferencia[] {
     return this.listaTransferencias;
   }
 
@@ -23,12 +23,12 @@ export class TransferenciaService {
     return this.httpClient.get<Transferencia[]>(this.url);
   }
 
-  adicionar(transferencia: Transferencia) : Observable<Transferencia> {
+  adicionar(transferencia: Transferencia): Observable<Transferencia> {
     this.hidratar(transferencia);
-    return this.httpClient.post<Transferencia>(this.url, transferencia)
+    return this.httpClient.post<Transferencia>(this.url, transferencia);
   }
 
-  private hidratar(transferencia) {
+  private hidratar(transferencia): void {
     transferencia.data = new Date();
   }
 }
